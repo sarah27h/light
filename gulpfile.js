@@ -28,6 +28,17 @@ const imagemin = require('gulp-imagemin');
 const imageminPngquant = require('imagemin-pngquant');
 const fileExists = require('file-exists');
 
+const browserify = require('browserify');
+const babelify = require('babelify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+
+// define entry for browserify
+const jsSrc = 'module.js';
+const jsFolder = 'src/js/';
+// we can add a script for front-end and scripts for back-end and so on
+const jsFiles = [jsSrc];
+
 const srcFiles = {
   mainScssPath: 'src/scss/**/mainStyle.scss',
   scssPagesPath: 'src/scss/pagesStyles/**/*.scss',
@@ -103,27 +114,26 @@ function scssTask() {
   );
 }
 
-function jsTask() {
-  return (
-    src([srcFiles.jsPath])
-      // To load existing source maps
-      // This will cause sourceMaps to use the previous sourcemap to create an ultimate sourcemap
-      .pipe(gulpif(!production, sourcemaps.init({ loadMaps: true })))
-      .pipe(
-        gulpif(
-          production,
-          babel({
-            presets: ['@babel/preset-env'],
-          })
-        )
-      )
-      .pipe(concat('all.js'))
-      .pipe(gulpif(production, rename({ extname: '.min.js' })))
-      .pipe(gulpif(production, uglify()))
-      .pipe(gulpif(!production, sourcemaps.write('./')))
-      .pipe(dest(distFiles.distJSPath))
-  );
-}
+async function jsTask() {
+  jsFiles.map(function (entry) {
+    return (
+      browserify({
+        entries: [jsFolder + entry],
+      })
+        .transform(babelify, { presets: ['@babel/preset-env'] })
+        .bundle()
+        .pipe(source('all.js'))
+        // To load existing source maps
+        // This will cause sourceMaps to use the previous sourcemap to create an ultimate sourcemap
+        .pipe(gulpif(production, rename({ extname: '.min.js' })))
+        .pipe(buffer())
+        .pipe(gulpif(!production, sourcemaps.init({ loadMaps: true })))
+        // .pipe(concat('all.js'))
+        .pipe(gulpif(production, uglify()))
+        .pipe(gulpif(!production, sourcemaps.write('./')))
+        .pipe(dest(distFiles.distJSPath))
+    );
+  });
 
 // optimize images
 function images() {
