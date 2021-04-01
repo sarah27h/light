@@ -44,6 +44,7 @@ const srcFiles = {
   scssPagesPath: 'src/scss/pagesStyles/**/*.scss',
   scssPath: 'src/scss/**/*.scss',
   jsPath: 'src/js/**/*.js',
+  jsFiles: 'src/js/',
   htmlPath: 'src/pages/**/*.html',
   imagesPath: 'src/images/**/*',
   indexPath: './index.html',
@@ -134,6 +135,7 @@ async function jsTask() {
         .pipe(dest(distFiles.distJSPath))
     );
   });
+}
 
 // optimize images
 function images() {
