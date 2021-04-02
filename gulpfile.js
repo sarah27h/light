@@ -26,6 +26,12 @@ const del = require('del');
 // compress images
 const imagemin = require('gulp-imagemin');
 const imageminPngquant = require('imagemin-pngquant');
+// create responsive images
+const responsive = require('gulp-responsive');
+
+// to convert images to WebP
+const webp = require('gulp-webp');
+
 const fileExists = require('file-exists');
 
 // serve our zipped index file for local server
@@ -131,6 +137,73 @@ function copyImagesTask() {
   return src([srcFiles.imagesPath]).pipe(dest(distFiles.distImagesPath));
 }
 
+// optimize images
+function optimizeImages() {
+  return src([srcFiles.imagesPath])
+    .pipe(
+      imagemin([
+        imagemin.gifsicle({ interlaced: true }),
+        imagemin.mozjpeg({ quality: 75, progressive: true }),
+        imagemin.optipng({ optimizationLevel: 5 }),
+        imagemin.svgo({
+          plugins: [imageminPngquant(), { removeViewBox: true }, { cleanupIDs: false }],
+        }),
+      ])
+    )
+    .pipe(dest(distFiles.distImagesPath));
+}
+
+// exclude images with prefix transparent
+const EXCLUDE_SRC = `!(*-tranparent)`;
+
+// resize images
+function resizeImages(from, width) {
+  const SRC = `src/images/${from}/${EXCLUDE_SRC}*.{jpg,png}`;
+  const DEST = `dist/images/${from}`;
+  return function resizeImage() {
+    return src(SRC)
+      .pipe(
+        responsive(
+          {
+            '*.{jpg,png}': [
+              {
+                width: `${width}`,
+                rename: {
+                  suffix: `-${width}`,
+                },
+                // Do not enlarge the output image if the input image are already less than the required dimensions.
+                skipOnEnlargement: true,
+              },
+            ],
+          },
+          {
+            // Global configuration for all images
+            // The output quality for JPEG, WebP and TIFF output formats
+            quality: 80,
+            // Use progressive (interlace) scan for JPEG and PNG output
+            progressive: true,
+            // Strip all metadata
+            withMetadata: false,
+            // Do not emit the error when image is enlarged.
+            errorOnEnlargement: false,
+          }
+        )
+      )
+      .pipe(dest(DEST));
+  };
+}
+
+// exclude images with prefix transparent
+const SRC = `dist/images/**/${EXCLUDE_SRC}*.{svg,png,jpg}`;
+
+// convert images to webp format
+function convertToWebp() {
+  return src(SRC)
+    .pipe(webp({ quality: 50 }))
+
+    .pipe(dest(distFiles.distImagesPath));
+}
+
 // Sass task: compiles the Scss files into CSS
 function scssTask() {
   return (
@@ -170,22 +243,6 @@ async function jsTask() {
   });
 }
 
-// optimize images
-function images() {
-  return src([srcFiles.imagesPath])
-    .pipe(
-      imagemin([
-        imagemin.gifsicle({ interlaced: true }),
-        imagemin.mozjpeg({ quality: 75, progressive: true }),
-        imagemin.optipng({ optimizationLevel: 5 }),
-        imagemin.svgo({
-          plugins: [imageminPngquant(), { removeViewBox: true }, { cleanupIDs: false }],
-        }),
-      ])
-    )
-    .pipe(dest(distFiles.distImagesPath));
-}
-
 // compress index file
 // replace css, js files with .min.css, .min.js extension files for production
 function compressIndex() {
@@ -221,22 +278,6 @@ function deleteMinFiles() {
   return del([`${distFiles.distCSSPath}/*.min.css`, `${distFiles.distJSPath}/*.min.js`]);
 }
 
-// dynamically change href and src in index.html in production
-function templateTask() {
-  return src([srcFiles.indexPath])
-    .pipe(replace(/mainStyle.css/g, 'mainStyle.min.css'))
-    .pipe(replace(/all.js/g, 'all.min.js'))
-    .pipe(dest(distFiles.distPath));
-}
-
-// dynamically change href and src in web pages in production
-function templatePagesTask() {
-  return src([srcFiles.htmlPath])
-    .pipe(replace(/mainStyle.css/g, 'mainStyle.min.css'))
-    .pipe(replace(/all.js/g, 'all.min.js'))
-    .pipe(dest(distFiles.distPagesPath));
-}
-
 // Cache busting solves the browser caching issue
 // by using a unique file version identifier to
 // tell the browser that a new version of the file is available.
@@ -267,6 +308,7 @@ function serveTask() {
     // middleware is too late in the stack when added via the options for .html files
     // as serve-static ends the request prematurely thinking that the index file doesn't exist.
     // override boolean will cause this middleware to be applied to the FRONT of the stack
+    // ************* comment middleware code as it effect index reload for any changes *****************
     // middleware: [
     //   {
     //     route: '', // empty 'route' will apply this to all paths
@@ -331,18 +373,23 @@ exports.default = series(
 // to produce a production version
 exports.build = series(
   cleanDistForBuild,
+  optimizeImages,
+  // parallel(
+  //   resizeImages('features', 250),
+  //   resizeImages('features', 350),
+  //   resizeImages('hero', 800),
+  //   resizeImages('hero', 1600)
+  // ),
   parallel(
     scssTask,
     jsTask,
-    images,
     initIndexHtml,
     compressIndex,
-    templateTask,
-    templatePagesTask,
     copyHTMLTask,
     compressHTMLTask,
     copyImagesTask,
     copyfontawesomeWebfontsTask
   ),
+  convertToWebp,
   deploy
 );
