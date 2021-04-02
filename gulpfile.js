@@ -34,6 +34,8 @@ const gzipStatic = require('connect-gzip-static');
 // compress html
 const gzip = require('gulp-gzip');
 const htmlmin = require('gulp-htmlmin');
+// to remove timestamp
+const processhtml = require('gulp-processhtml');
 
 // flag to Gulp to run different tasks for prod, dev
 const argv = require('yargs').argv;
@@ -100,9 +102,18 @@ async function copyfontawesomeWebfontsTask() {
 // replace css, js files with .min.css, .min.js extension files for production
 function initIndexHtml() {
   return src([srcFiles.indexPath])
-    .pipe(gulpif(production, replace(/mainStyle.css/g, 'mainStyle.min.css')))
-    .pipe(gulpif(production, replace(/all.js/g, 'all.min.js')))
+    .pipe(gulpif(production, processhtml()))
     .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
+    .pipe(dest(distFiles.distPath));
+}
+
+// compress index file
+// replace css, js files with .min.css, .min.js extension files for production
+function compressIndex() {
+  return src([srcFiles.indexPath])
+    .pipe(gulpif(production, processhtml()))
+    .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
+    .pipe(gzip())
     .pipe(dest(distFiles.distPath));
 }
 
@@ -178,12 +189,15 @@ function images() {
 // compress index file
 // replace css, js files with .min.css, .min.js extension files for production
 function compressIndex() {
-  return src([srcFiles.indexPath])
-    .pipe(gulpif(production, replace(/mainStyle.css/g, 'mainStyle.min.css')))
-    .pipe(gulpif(production, replace(/all.js/g, 'all.min.js')))
-    .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
-    .pipe(gzip())
-    .pipe(dest(distFiles.distPath));
+  return (
+    src([srcFiles.indexPath])
+      .pipe(processhtml())
+      // .pipe(gulpif(production, replace(/mainStyle.css/g, 'mainStyle.min.css')))
+      .pipe(gulpif(production, replace(/all.js/g, 'all.min.js')))
+      .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
+      .pipe(gzip())
+      .pipe(dest(distFiles.distPath))
+  );
 }
 
 // compress html pages
@@ -253,13 +267,13 @@ function serveTask() {
     // middleware is too late in the stack when added via the options for .html files
     // as serve-static ends the request prematurely thinking that the index file doesn't exist.
     // override boolean will cause this middleware to be applied to the FRONT of the stack
-    middleware: [
-      {
-        route: '', // empty 'route' will apply this to all paths
-        handle: gzipStatic('./dist/'), // the callable
-        override: true,
-      },
-    ],
+    // middleware: [
+    //   {
+    //     route: '', // empty 'route' will apply this to all paths
+    //     handle: gzipStatic('./dist/'), // the callable
+    //     override: true,
+    //   },
+    // ],
   });
 
   // done();
