@@ -4,11 +4,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link href="css/mainStyle.css?t=1617322458974" rel="stylesheet" />
+    <!-- preload webfonts  -->
+    <!-- build:replace '<link rel="preload" href="webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>' -->
+    <link
+      rel="preload"
+      href="/webfonts/fa-solid-900.woff2?t=1617493487521"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <!-- /build -->
+
+    <!-- build:replace '<link rel="preload" href="js/all.min.js" as="script">' -->
+    <link rel="preload" href="js/all.js?t=1617493487521" as="script" />
+    <!-- /build -->
+
+    <!-- build:replace '<link rel="preload" href="css/mainStyle.min.css" as="style" />' -->
+    <link rel="preload" href="css/mainStyle.css?t=1617493487521" as="style" />
+    <!-- /build -->
+
+    <!-- build:replace '<link href="css/mainStyle.min.css" rel="stylesheet" />' -->
+    <link href="css/mainStyle.css?t=1617493487521" rel="stylesheet" />
+    <!-- /build -->
+
     <title>Start Project...</title>
   </head>
   <body>
     <h1>Start your project............</h1>
-    <script src="js/all.js?t=1617322458974"></script>
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Dropdown button
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
+    <!-- build:replace '<script src="js/all.min.js" defer></script>' -->
+    <script src="js/all.js?t=1617493487521"></script>
+    <!-- /build -->
   </body>
 </html>
