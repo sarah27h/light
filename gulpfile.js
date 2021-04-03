@@ -390,6 +390,6 @@ exports.build = series(
     copyImagesTask,
     copyfontawesomeWebfontsTask
   ),
-  convertToWebp,
-  deploy
+  convertToWebp
+  // deploy
 );

@@ -1,1 +1,1 @@
-console.log('in module');
+import './bootstrapStart';

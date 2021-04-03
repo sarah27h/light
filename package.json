@@ -45,11 +45,14 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
+    "bootstrap": "^4.6.0",
     "connect-gzip-static": "^2.1.1",
     "file-exists": "^5.0.1",
     "gulp-gzip": "^1.4.2",
     "gulp-htmlmin": "^5.0.1",
     "imagemin-pngquant": "^8.0.0",
-    "node-sass": "^4.14.1"
+    "jquery": "^3.6.0",
+    "node-sass": "^4.14.1",
+    "popper.js": "^1.16.1"
   }
 }
