@@ -13,9 +13,9 @@ This repo perform as boilerplate for simple front-end projects using Sass and Gu
 
 ## Installation
 
-1- Download zip folder or clone project > https://github.com/sarah27h/start-project.git
+1- Download zip folder or clone project > https://github.com/sarah27h/bootstrap4.6-starter.git
 
-`git clone https://github.com/sarah27h/start-project.git <add-your-project-name>`
+`git clone https://github.com/sarah27h/bootstrap4.6-starter.git <add-your-project-name>`
 
 2- Open Github and create new repo.
 
