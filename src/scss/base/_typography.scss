@@ -1,4 +1,42 @@
 // typography
+/* raleway-regular - latin */
+@font-face {
+  font-family: $primary-font-family;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../../fonts/raleway-v19-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+    url('../../../fonts/raleway-v19-latin-regular.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */ url('../../../fonts/raleway-v19-latin-regular.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('../../../fonts/raleway-v19-latin-regular.woff') format('woff'),
+    /* Modern Browsers */ url('../../../fonts/raleway-v19-latin-regular.ttf') format('truetype'),
+    /* Safari, Android, iOS */ url('../../../fonts/raleway-v19-latin-regular.svg#Raleway')
+      format('svg'); /* Legacy iOS */
+}
+/* raleway-600 - latin */
+@font-face {
+  font-family: $primary-font-family;
+  font-style: normal;
+  font-weight: 600;
+  src: url('../../../fonts/raleway-v19-latin-600.eot'); /* IE9 Compat Modes */
+  src: local(''), url('../../../fonts/raleway-v19-latin-600.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */ url('../../../fonts/raleway-v19-latin-600.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('../../../fonts/raleway-v19-latin-600.woff') format('woff'),
+    /* Modern Browsers */ url('../../../fonts/raleway-v19-latin-600.ttf') format('truetype'),
+    /* Safari, Android, iOS */ url('../../../fonts/raleway-v19-latin-600.svg#Raleway') format('svg'); /* Legacy iOS */
+}
+/* raleway-800 - latin */
+@font-face {
+  font-family: $primary-font-family;
+  font-style: normal;
+  font-weight: 800;
+  src: url('../../../fonts/raleway-v19-latin-800.eot'); /* IE9 Compat Modes */
+  src: local(''), url('../../../fonts/raleway-v19-latin-800.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */ url('../../../fonts/raleway-v19-latin-800.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('../../../fonts/raleway-v19-latin-800.woff') format('woff'),
+    /* Modern Browsers */ url('../../../fonts/raleway-v19-latin-800.ttf') format('truetype'),
+    /* Safari, Android, iOS */ url('../../../fonts/raleway-v19-latin-800.svg#Raleway') format('svg'); /* Legacy iOS */
+}
 
 .heading-1 {
   font-family: $primary-font;
@@ -10,7 +48,7 @@
 }
 
 .heading-2 {
-  font-family: $secondary-font;
+  font-family: $primary-font;
   color: $black;
 
   &--white {
@@ -35,7 +73,7 @@
 
 // other text
 .body-text {
-  font-family: $secondary-font;
+  font-family: $primary-font;
   color: $light-gray;
 
   &--light {

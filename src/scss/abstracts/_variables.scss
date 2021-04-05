@@ -1,10 +1,7 @@
-// <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Oswald:wght@300;400;600&family=Pacifico&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-// <link href="https://fonts.googleapis.com/css?family=Chewy|Nunito:400,400i,600,700,800" rel="stylesheet">
-
 // fonts
-$primary-font: 'Chewy', cursive; // 400,400i,600,700,800
-$secondary-font: 'Nunito', sans-serif; // 400,400i,600,700,800
+$primary-font-family: Raleway; // 400, 600, 800
+
+$primary-font: $primary-font-family, sans-serif; // 600
 
 // colors
 $primary-color: #fe919e;

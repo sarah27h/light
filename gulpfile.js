@@ -79,6 +79,7 @@ const srcFiles = {
   imagesPath: 'src/images/**/*',
   indexPath: './index.html',
   webFontsPath: './node_modules/@fortawesome/fontawesome-free/webfonts/*',
+  fontsPath: 'src/fonts/**',
 };
 
 const distFiles = {
@@ -88,6 +89,7 @@ const distFiles = {
   distCSSPath: 'dist/css',
   distJSPath: 'dist/js',
   distWebfonts: 'dist/webfonts',
+  distFontsPath: 'dist/fonts',
 };
 
 // check fontawesome webfonts exist then make a copy in dist
@@ -101,6 +103,15 @@ async function copyfontawesomeWebfontsTask() {
   return gulpif(
     fileExists.sync(fontawesomeWebfont),
     src([srcFiles.webFontsPath]).pipe(dest(distFiles.distWebfonts))
+  );
+}
+
+// copy fonts if exist
+const localFonts = srcFiles.fonts;
+async function copyFontsTask() {
+  return gulpif(
+    fileExists.sync(localFonts),
+    src([srcFiles.fontsPath]).pipe(dest(distFiles.distFontsPath))
   );
 }
 
@@ -364,7 +375,8 @@ exports.default = series(
     copyHTMLTask,
     compressHTMLTask,
     copyImagesTask,
-    copyfontawesomeWebfontsTask
+    copyfontawesomeWebfontsTask,
+    copyFontsTask
   ),
   cacheBustTask,
   parallel(serveTask, watchTask)
@@ -388,7 +400,8 @@ exports.build = series(
     copyHTMLTask,
     compressHTMLTask,
     copyImagesTask,
-    copyfontawesomeWebfontsTask
+    copyfontawesomeWebfontsTask,
+    copyFontsTask
   ),
   convertToWebp
   // deploy
