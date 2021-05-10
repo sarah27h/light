@@ -1,1 +1,3 @@
 import './bootstrapStart';
+
+import './testmonialsSlider';

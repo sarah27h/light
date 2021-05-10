@@ -4,6 +4,11 @@
 @import '../../node_modules/@fortawesome/fontawesome-free/scss/solid.scss';
 @import '../../node_modules/@fortawesome/fontawesome-free/scss/brands.scss';
 
+// tinyslider
+@import '../../node_modules/tiny-slider/src/tiny-slider.scss';
+
+@import 'bootstrapStart';
+
 @import 'abstracts/variables';
 @import 'abstracts/mixins';
 
@@ -14,9 +19,8 @@
 @import 'components/button';
 
 @import 'layout/header';
+@import 'layout/hero';
 @import 'layout/navigation';
 @import 'layout/about';
 @import 'layout/footer';
 @import 'layout/subscribe';
-
-@import 'bootstrapStart';

@@ -1,0 +1,33 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  &__contact {
+    font-size: 3rem;
+    font-weight: bold;
+    color: $white;
+
+    @include media-breakpoint-up(lg) {
+      color: $black;
+    }
+  }
+
+  &__info {
+    text-align: center;
+    background: #ffcc00;
+
+    a {
+      color: $black;
+    }
+    @include media-breakpoint-up(lg) {
+      background: #333;
+
+      a {
+        color: $white;
+      }
+    }
+  }
+}

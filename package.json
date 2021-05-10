@@ -53,6 +53,7 @@
     "imagemin-pngquant": "^8.0.0",
     "jquery": "^3.6.0",
     "node-sass": "^4.14.1",
-    "popper.js": "^1.16.1"
+    "popper.js": "^1.16.1",
+    "tiny-slider": "^2.9.3"
   }
 }

@@ -40,7 +40,7 @@ $success: #7952b3;
 @import '../../node_modules/bootstrap/scss/root'; // Required
 @import '../../node_modules/bootstrap/scss/reboot'; // Required
 @import '../../node_modules/bootstrap/scss/type';
-// @import "../../node_modules/bootstrap/scss/images";
+@import '../../node_modules/bootstrap/scss/images';
 // @import "../../node_modules/bootstrap/scss/code";
 @import '../../node_modules/bootstrap/scss/grid';
 // @import "../../node_modules/bootstrap/scss/tables";
@@ -73,7 +73,7 @@ $success: #7952b3;
 // @import "../../node_modules/bootstrap/scss/print";
 
 body {
-  padding: 3rem 1.5rem;
+  // padding: 3rem 1.5rem;
 }
 
 // Style Bootstrap icons
