@@ -1,0 +1,14 @@
+.announcement {
+  padding: 4rem 22rem 5rem;
+  background: $black;
+  font-size: 1.5rem;
+  &__text {
+    span {
+      background-color: $red;
+    }
+
+    &:last-of-type {
+      color: $red;
+    }
+  }
+}
