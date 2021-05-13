@@ -1,0 +1,26 @@
+.about {
+  padding: 5rem 0;
+
+  &__item {
+    margin-bottom: 4rem;
+  }
+
+  &__heading {
+    color: $white;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &__text {
+    span {
+      color: $gray-100;
+    }
+    color: $gray-300;
+  }
+
+  &__img {
+    @include media-breakpoint-up(lg) {
+      width: 90%;
+    }
+  }
+}
