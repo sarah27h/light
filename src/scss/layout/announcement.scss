@@ -1,7 +1,11 @@
 .announcement {
-  padding: 4rem 22rem 5rem;
+  padding: 4rem 0 0;
   background: $black;
-  font-size: 1.5rem;
+
+  @include media-breakpoint-up(lg) {
+    padding: 4rem 11rem 0;
+  }
+
   &__text {
     span {
       background-color: $red;
