@@ -1,0 +1,112 @@
+.products {
+  position: relative;
+  padding: 4rem 0 0;
+
+  &__heading {
+    color: $primary-color;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -11;
+    background-color: $secondary-color;
+    @include media-breakpoint-up(lg) {
+      width: 85%;
+      border-radius: 0 250px 0 0;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 50%;
+    z-index: -11;
+    background-color: $white;
+    @include media-breakpoint-up(lg) {
+    }
+  }
+
+  &__text {
+    color: $gray-700;
+    font-size: 1.1rem;
+
+    @include media-breakpoint-up(lg) {
+      padding-right: 27rem;
+    }
+  }
+
+  &__wrapper {
+    @include media-breakpoint-up(lg) {
+      padding-left: 9rem;
+      margin: 2rem 0;
+      margin-right: -155px;
+    }
+  }
+
+  &__item {
+  }
+
+  &__details {
+    position: relative;
+    width: 244px;
+    bottom: 103px;
+    left: 80px;
+    background: #fff;
+    padding: 2rem 2.5rem;
+    border-radius: 30px 0 30px 30px;
+    box-shadow: -1px 5px 10px #c9c9c9;
+    text-align: left;
+
+    @include media-breakpoint-up(lg) {
+      left: 128px;
+    }
+
+    a {
+      font-weight: 600;
+    }
+  }
+
+  &__heading-sub {
+    text-transform: capitalize;
+    font-weight: 800;
+  }
+}
+
+// customize tiny-slider
+.tns-controls {
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  @include media-breakpoint-up(lg) {
+    position: absolute;
+    top: 120px;
+    right: 345px;
+  }
+
+  button {
+    margin-left: 1rem;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    border-radius: 100%;
+    background: $black;
+    color: $white;
+    font-size: 1.5rem;
+
+    &:hover {
+      background-color: $gray-800;
+    }
+  }
+}
