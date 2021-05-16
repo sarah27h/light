@@ -1,17 +1,27 @@
 .header {
+  padding: 3rem 0;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 10;
 
+  // for add background for header while scrolling
+  &.scroll-js {
+    padding: 1rem 0;
+    background: rgba(119, 119, 119, 0.85);
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
   &__contact {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: $white;
+  }
 
+  &__logo {
     @include media-breakpoint-up(lg) {
-      color: $black;
+      width: 45%;
     }
   }
 
