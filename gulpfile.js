@@ -386,12 +386,14 @@ exports.default = series(
 exports.build = series(
   cleanDistForBuild,
   optimizeImages,
-  // parallel(
-  //   resizeImages('features', 250),
-  //   resizeImages('features', 350),
-  //   resizeImages('hero', 800),
-  //   resizeImages('hero', 1600)
-  // ),
+  parallel(
+    resizeImages('hero', 270),
+    resizeImages('hero', 900),
+    resizeImages('about', 400),
+    resizeImages('about', 690),
+    resizeImages('products', 250),
+    resizeImages('products', 400)
+  ),
   parallel(
     scssTask,
     jsTask,

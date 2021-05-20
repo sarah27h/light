@@ -32,7 +32,9 @@
     &::after {
       content: '';
       background: linear-gradient(rgba(255, 224, 102, 0.5), rgba(0, 0, 0, 0.5)),
-        url('../../images/hero/banner3.png');
+        url('../../images/hero/hero-img-900.png');
+      background: linear-gradient(rgba(255, 224, 102, 0.5), rgba(0, 0, 0, 0.5)),
+        url('../../images/hero/hero-img-900.webp');
       background-size: cover;
       position: absolute;
       top: 0;
