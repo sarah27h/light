@@ -332,13 +332,25 @@ function serveTask() {
   // done();
 }
 
+const ghPages = require('gulp-gh-pages');
+
+// deploy to github pages
+const options = {
+  // branch: 'master',
+};
+
 function deploy(done) {
-  return surge({
-    project: './dist/', // Path to your static build directory
-    domain: 'https://yoursite.surge.sh', // Your domain or Surge subdomain
-  });
+  return src('./dist/**/*').pipe(ghPages(options));
   done();
 }
+
+// function deploy(done) {
+//   return surge({
+//     project: './dist/', // Path to your static build directory
+//     domain: 'https://yoursite.surge.sh', // Your domain or Surge subdomain
+//   });
+//   done();
+// }
 
 function reload(done) {
   browserSync.reload();
@@ -405,6 +417,6 @@ exports.build = series(
     copyfontawesomeWebfontsTask,
     copyFontsTask
   ),
-  convertToWebp
-  // deploy
+  convertToWebp,
+  deploy
 );
