@@ -8,7 +8,7 @@
     <!-- build:replace '<link rel="preload" href="webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>' -->
     <link
       rel="preload"
-      href="/webfonts/fa-solid-900.woff2?t=1621466160584"
+      href="/webfonts/fa-solid-900.woff2?t=1621555273697"
       as="font"
       type="font/woff2"
       crossorigin="anonymous"
@@ -18,7 +18,7 @@
     <!-- build:replace '<link rel="preload" href="webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>' -->
     <link
       rel="preload"
-      href="/webfonts/fa-brands-400.woff2?t=1621466160584"
+      href="/webfonts/fa-brands-400.woff2?t=1621555273697"
       as="font"
       type="font/woff2"
       crossorigin="anonymous"
@@ -26,18 +26,18 @@
     <!-- /build -->
 
     <!-- build:replace '<link rel="preload" href="js/all.min.js" as="script">' -->
-    <link rel="preload" href="js/all.js?t=1621466160584" as="script" />
+    <link rel="preload" href="js/all.js?t=1621555273697" as="script" />
     <!-- /build -->
 
     <!-- build:replace '<link rel="preload" href="css/mainStyle.min.css" as="style" />' -->
-    <link rel="preload" href="css/mainStyle.css?t=1621466160584" as="style" />
+    <link rel="preload" href="css/mainStyle.css?t=1621555273697" as="style" />
     <!-- /build -->
 
     <!-- build:replace '<link href="css/mainStyle.min.css" rel="stylesheet" />' -->
-    <link href="css/mainStyle.css?t=1621466160584" rel="stylesheet" />
+    <link href="css/mainStyle.css?t=1621555273697" rel="stylesheet" />
     <!-- /build -->
 
-    <title>Start Project...</title>
+    <title>Lights | A Professional Electrical Service</title>
   </head>
   <body>
     <!-- header -->
@@ -62,7 +62,7 @@
               class="header__contact d-flex flex-lg-row align-items-center justify-content-lg-between flex-column text-center"
             >
               <p class="">$0 Call Out Fee</p>
-              <p class="header__info rounded-pill px-5 py-3 mt-1">
+              <p class="header__info rounded-pill px-5 py-3 mb-lg-0 mt-sm-1">
                 <a href="tel:1500-000-000">1500 000 000</a>
               </p>
             </div>
@@ -514,13 +514,16 @@
         <div class="row border-top py-lg-5 py-md-4 py-3 justify-content-center align-items-center">
           <div class="col-auto my-2">
             © <span id="update_year"></span> Lights
-            <span class="footer__seperator px-3">|</span> All Rights Reserved
+            <span class="footer__seperator px-2 px-sm-3">|</span> All Rights Reserved
           </div>
           <div class="col-auto my-2 footer__credits">
             <i class="fab fa-cc-visa px-2 fa-3x"></i> <i class="fab fa-cc-mastercard fa-3x"></i>
           </div>
           <div class="col-auto my-2">
-            Privacy Policies <span class="footer__seperator px-3">|</span> Terms & Conditions
+            <a href="#"> Policies</a> <span class="footer__seperator px-2 px-sm-3">|</span>
+            <a href="#"> Terms & Conditions</a>
+            <span class="footer__seperator px-2 px-sm-3">|</span>
+            <a data-toggle="modal" href="#attributesModal" class="footer__attributes">Attributes</a>
           </div>
         </div>
       </div>
@@ -528,7 +531,67 @@
     <!-- footer -->
 
     <!-- build:replace '<script src="js/all.min.js" defer></script>' -->
-    <script src="js/all.js?t=1621466160584"></script>
+    <script src="js/all.js?t=1621555273697"></script>
     <!-- /build -->
+
+    <!-- attributes modal -->
+    <div class="modal attribute-modal" tabindex="-1" id="attributesModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Attributes</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              <a href="https://www.freepik.com/photos/background"
+                >Background photo created by tirachard - www.freepik.com</a
+              >
+            </p>
+            <p>
+              <a href="https://www.freepik.com/photos/technology"
+                >Technology photo created by evening_tao - www.freepik.com</a
+              >
+            </p>
+            <p>
+              <a href="https://www.freepik.com/photos/vintage"
+                >Vintage photo created by lifeforstock - www.freepik.com</a
+              >
+            </p>
+            <p>
+              <a href="https://www.freepik.com/photos/wood"
+                >Wood photo created by wirestock - www.freepik.com</a
+              >
+            </p>
+            <p>
+              <a href="https://www.freepik.com/photos/house"
+                >House photo created by wirestock - www.freepik.com</a
+              >
+            </p>
+            <p>
+              <a href="https://www.freepik.com/photos/design"
+                >Design photo created by wirestock - www.freepik.com</a
+              >
+            </p>
+            <p>
+              <a href="https://www.freepik.com/photos/background"
+                >Background photo created by topntp26 - www.freepik.com</a
+              >
+            </p>
+            <p>
+              <a href="https://www.freepik.com/photos/office"
+                >Office photo created by mdjaff - www.freepik.com</a
+              >
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- attributes modal -->
   </body>
 </html>

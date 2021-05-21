@@ -1,27 +1,44 @@
 .header {
   padding: 3rem 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
+  background-color: $gray-900;
 
-  // for add background for header while scrolling
-  &.scroll-js {
-    padding: 1rem 0;
-    background: rgba(119, 119, 119, 0.85);
-    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+  @include media-breakpoint-up(lg) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: transparent;
+
+    // for add background for header while scrolling
+    &.header-scroll-js {
+      padding: 0.5rem 0;
+      background: rgba(119, 119, 119, 0.85);
+      box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+    }
   }
 
   &__contact {
     font-size: 1.2rem;
     font-weight: bold;
     color: $white;
+
+    @include media-breakpoint-up(lg) {
+      &.contant-scroll-js {
+        font-size: 1rem;
+        transition: all 0.2s;
+      }
+    }
   }
 
   &__logo {
     @include media-breakpoint-up(lg) {
       width: 45%;
+
+      &.logo-scroll-js {
+        width: 25%;
+        transition: all 0.2s;
+      }
     }
   }
 
