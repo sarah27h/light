@@ -24,7 +24,7 @@
     color: $white;
 
     @include media-breakpoint-up(lg) {
-      &.contant-scroll-js {
+      &.contact-scroll-js {
         font-size: 1rem;
         transition: all 0.2s;
       }
