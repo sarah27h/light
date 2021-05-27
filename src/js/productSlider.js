@@ -19,3 +19,11 @@ const slider = tns({
   autoplayButtonOutput: false,
   controlsText: ['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>'],
 });
+
+// add aria-label for prevBtn & nextBtn
+const prevBtn = document.querySelector('[data-controls="prev"]');
+const nextBtn = document.querySelector('[data-controls="next"]');
+prevBtn.setAttribute('aria-label', 'Previous product');
+nextBtn.setAttribute('aria-label', 'next product');
+console.log(prevBtn);
+console.log(nextBtn);

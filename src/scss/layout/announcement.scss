@@ -7,12 +7,14 @@
   }
 
   &__text {
+    color: #161616;
     span {
-      background-color: $red;
+      background-color: #ff0018;
+      color: #161616;
     }
+  }
 
-    &:last-of-type {
-      color: $red;
-    }
+  &__hint {
+    color: #ff6a6c;
   }
 }
